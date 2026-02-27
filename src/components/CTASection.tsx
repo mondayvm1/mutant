@@ -2,13 +2,49 @@ import { ScrollReveal } from "./ScrollReveal";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-export function CTASection() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+const DEMO_DAYS = [
+  "Saturday, March 15 · Group Ride #1",
+  "Saturday, March 22 · Group Ride #2",
+  "Saturday, April 5 · Group Ride #3",
+  "Saturday, April 19 · Group Ride #4",
+];
 
-  const handleSubmit = (e: React.FormEvent) => {
+export function CTASection() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [demoDay, setDemoDay] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) setSubmitted(true);
+    if (!name || !email) return;
+
+    setLoading(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/reserve", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, demoDay: demoDay || undefined }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to reserve");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "Something went wrong. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -33,27 +69,53 @@ export function CTASection() {
 
         <ScrollReveal delay={200}>
           <p className="text-muted-foreground font-body text-lg mb-10 max-w-lg mx-auto">
-            Only 100 units in the first production run. Reserve your spot with $0 down. 
-            Just your email — and your commitment to riding different.
+            Only 100 units in the first production run. Reserve your spot with $0 down.
+            Just your info — and your commitment to riding different.
           </p>
         </ScrollReveal>
 
         <ScrollReveal delay={300}>
           {!submitted ? (
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3 max-w-md mx-auto">
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Your name"
+                required
+                className="px-5 py-4 bg-secondary border border-border text-foreground font-body placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
+              />
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 required
-                className="flex-1 px-5 py-4 bg-secondary border border-border text-foreground font-body placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
+                className="px-5 py-4 bg-secondary border border-border text-foreground font-body placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
               />
+              <select
+                value={demoDay}
+                onChange={(e) => setDemoDay(e.target.value)}
+                className="px-5 py-4 bg-secondary border border-border text-foreground font-body focus:outline-none focus:border-primary transition-colors appearance-none cursor-pointer"
+              >
+                <option value="">Join a Demo Day group ride (optional)</option>
+                {DEMO_DAYS.map((day) => (
+                  <option key={day} value={day}>
+                    {day}
+                  </option>
+                ))}
+              </select>
+
+              {error && (
+                <p className="text-red-500 font-body text-sm text-left">{error}</p>
+              )}
+
               <button
                 type="submit"
-                className="px-8 py-4 bg-primary text-primary-foreground font-display text-xl tracking-widest hover:box-glow-strong transition-shadow duration-300"
+                disabled={loading}
+                className="px-8 py-4 bg-primary text-primary-foreground font-display text-xl tracking-widest hover:box-glow-strong transition-shadow duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                RESERVE
+                {loading ? "RESERVING..." : "RESERVE"}
               </button>
             </form>
           ) : (
@@ -64,7 +126,7 @@ export function CTASection() {
             >
               <p className="font-display text-3xl text-primary mb-2">YOU'RE IN</p>
               <p className="text-muted-foreground font-body">
-                We'll reach out when it's time. Welcome to the mutation.
+                Check your inbox — confirmation is on the way. Welcome to the mutation.
               </p>
             </motion.div>
           )}
