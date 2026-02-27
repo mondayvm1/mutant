@@ -13,27 +13,27 @@ export function ActionSection() {
   const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
   return (
-    <section ref={ref} className="relative py-16">
+    <section ref={ref} className="relative py-8 sm:py-16">
       <motion.div
-        className="max-w-7xl mx-auto px-6"
+        className="max-w-7xl mx-auto px-4 sm:px-6"
         style={{ scale, opacity }}
       >
         <div className="relative overflow-hidden rounded-sm">
           <img
             src={actionImg}
             alt="Mutant in action"
-            className="w-full h-[60vh] md:h-[80vh] object-cover"
+            className="w-full h-[50vh] sm:h-[60vh] md:h-[80vh] object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-transparent" />
           
-          <div className="absolute bottom-0 left-0 p-8 md:p-16 max-w-xl">
-            <h2 className="font-display text-[clamp(2rem,5vw,5rem)] leading-[0.9] text-foreground mb-4">
+          <div className="absolute bottom-0 left-0 p-6 sm:p-8 md:p-16 max-w-xl">
+            <h2 className="font-display text-[clamp(1.8rem,5vw,5rem)] leading-[0.9] text-foreground mb-3 sm:mb-4">
               BUILT FOR
               <br />
               <span className="gradient-text">THE WILD</span>
             </h2>
-            <p className="text-foreground/70 font-body text-sm md:text-base leading-relaxed">
+            <p className="text-foreground/70 font-body text-xs sm:text-sm md:text-base leading-relaxed">
               From desert dunes to mountain trails — the Mutant doesn't just survive the terrain. 
               It owns it.
             </p>
