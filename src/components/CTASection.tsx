@@ -31,10 +31,15 @@ export function CTASection() {
         body: JSON.stringify({ name, email, demoDay: demoDay || undefined }),
       });
 
-      const data = await res.json();
+      let data: { error?: string; success?: boolean } = {};
+      try {
+        data = await res.json();
+      } catch {
+        // Response wasn't JSON (e.g. Vercel error page)
+      }
 
       if (!res.ok) {
-        throw new Error(data.error || "Failed to reserve");
+        throw new Error(data.error || "Something went wrong. Please try again.");
       }
 
       setSubmitted(true);

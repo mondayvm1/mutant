@@ -2,9 +2,6 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import Stripe from "stripe";
 import { Resend } from "resend";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-const resend = new Resend(process.env.RESEND_API_KEY!);
-
 const OWNER_EMAIL = "renebetancourtiii@gmail.com";
 
 const DEMO_DAY_INFO: Record<string, string> = {
@@ -27,6 +24,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
+
+  if (!process.env.STRIPE_SECRET_KEY || !process.env.RESEND_API_KEY) {
+    return res.status(500).json({ error: "Server not configured yet. Please try again later." });
+  }
+
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   const { name, email, demoDay } = req.body as {
     name: string;
