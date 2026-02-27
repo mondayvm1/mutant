@@ -45,7 +45,7 @@ export function SolutionSection() {
                 <br />
                 <span className="gradient-text">GROUND</span>
                 <br />
-                HARD TO KILL
+                BORN TO RIP
               </h2>
             </ScrollReveal>
 
