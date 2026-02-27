@@ -20,8 +20,8 @@ const features = [
     desc: "Thousands of hours. Zero rollovers. The geometry simply doesn't allow it.",
   },
   {
-    stat: "45 MPH",
-    label: "TOP SPEED",
+    stat: "45+",
+    label: "MPH TOP SPEED",
     desc: "When the platform is stable, you can unlock real performance.",
   },
 ];
