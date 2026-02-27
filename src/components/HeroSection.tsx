@@ -54,7 +54,7 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.8 }}
         >
-          Top Speed: 85 MPH. Lower. Safer. The 4-wheeler reinvented from the ground up.
+          Top Speed: 45 MPH. Lower. Safer. The 4-wheeler reinvented from the ground up.
         </motion.p>
 
         <motion.div
