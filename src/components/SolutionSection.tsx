@@ -41,11 +41,11 @@ export function SolutionSection() {
 
             <ScrollReveal direction="right" delay={100}>
               <h2 className="font-display text-[clamp(2.5rem,5vw,5rem)] leading-[0.9] text-foreground mb-8">
-                LOWER TO THE
+                LOW TO THE
                 <br />
                 <span className="gradient-text">GROUND</span>
                 <br />
-                CLOSER TO GOD
+                HARD TO KILL
               </h2>
             </ScrollReveal>
 
