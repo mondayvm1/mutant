@@ -45,7 +45,7 @@ export function SolutionSection() {
                 <br />
                 <span className="gradient-text">GROUND</span>
                 <br />
-                BORN TO RIP
+                BUILT TO DOMINATE
               </h2>
             </ScrollReveal>
 
