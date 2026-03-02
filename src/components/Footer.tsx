@@ -6,15 +6,7 @@ export function Footer() {
           MUTANT<span className="text-primary">.</span>
         </div>
         <p className="text-muted-foreground text-xs font-body">
-          © 2026 Mutant Vehicles. A new species of machine. 
-          <a
-            href="https://adfluence.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary underline ml-1"
-          >
-            adfluence.org
-          </a>
+          © 2026 Mutant Vehicles. A new species of machine.
         </p>
       </div>
       <a
