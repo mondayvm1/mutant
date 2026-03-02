@@ -7,7 +7,6 @@ export function Footer() {
         </div>
         <p className="text-muted-foreground text-xs font-body">
           © {new Date().getFullYear()} Mutant Vehicles. A new species of machine.
-          adfluence.org
         </p>
       </div>
       <a
