@@ -2,12 +2,35 @@ import { ScrollReveal } from "./ScrollReveal";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const DEMO_DAYS = [
-  "Saturday, March 15 · Group Ride #1",
-  "Saturday, March 22 · Group Ride #2",
-  "Saturday, April 5 · Group Ride #3",
-  "Saturday, April 19 · Group Ride #4",
-];
+// generate next 5 Saturdays (or next demo days) dynamically and mark the first one as sold out
+function generateDemoDays(count = 5) {
+  const days: { text: string; soldOut: boolean }[] = [];
+  const today = new Date();
+  // find next Saturday (0=Sunday, 6=Saturday)
+  const offset = (6 - today.getDay() + 7) % 7 || 7; // always move forward at least one
+  const nextSat = new Date(today);
+  nextSat.setDate(today.getDate() + offset);
+
+  for (let i = 0; i < count; i++) {
+    const d = new Date(nextSat);
+    days.push(d);
+    nextSat.setDate(nextSat.getDate() + 7);
+  }
+
+  return days.map((d, idx) => {
+    const formatted = d.toLocaleDateString("en-US", {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+    });
+    let text = `${formatted} · Group Ride #${idx + 1}`;
+    const soldOut = idx === 0;
+    if (soldOut) text += " (sold out)";
+    return { text, soldOut };
+  });
+}
+
+const DEMO_DAYS = generateDemoDays();
 
 export function CTASection() {
   const [name, setName] = useState("");
@@ -97,9 +120,9 @@ export function CTASection() {
                 className="px-5 py-4 bg-secondary border border-border text-foreground font-body focus:outline-none focus:border-primary transition-colors appearance-none cursor-pointer"
               >
                 <option value="">Join a Demo Day group ride (optional)</option>
-                {DEMO_DAYS.map((day) => (
-                  <option key={day} value={day}>
-                    {day}
+                {DEMO_DAYS.map(({ text, soldOut }) => (
+                  <option key={text} value={text} disabled={soldOut}>
+                    {text}
                   </option>
                 ))}
               </select>
