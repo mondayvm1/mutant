@@ -21,10 +21,6 @@ export function Footer() {
         href="https://adfluence.org"
         target="_blank"
         rel="noopener noreferrer"
-        onClick={(e) => {
-          e.preventDefault();
-          window.open("https://adfluence.org", "_blank", "noopener,noreferrer");
-        }}
         className="mt-8 pb-6 flex items-center justify-center gap-2 text-muted-foreground/50 text-xs font-body tracking-widest hover:text-muted-foreground/70 transition-colors cursor-pointer"
       >
         <span>MADE WITH</span>
