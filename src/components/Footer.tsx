@@ -9,6 +9,17 @@ export function Footer() {
           © 2026 Mutant Vehicles. A new species of machine.
         </p>
       </div>
+      <div className="mt-8 pb-6 flex items-center justify-center gap-2 text-muted-foreground/50 text-xs font-body tracking-widest">
+        <span>MADE WITH</span>
+        <a
+          href="https://adfluence.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-muted-foreground/70 font-semibold hover:text-muted-foreground transition-colors"
+        >
+          adfluence.org
+        </a>
+      </div>
     </footer>
   );
 }
