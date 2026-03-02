@@ -25,21 +25,14 @@ export function CTASection() {
     setError("");
 
     try {
-      const res = await fetch("/api/reserve", {
+      const res = await fetch("https://formspree.io/f/xykdaqvy", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, demoDay: demoDay || undefined }),
       });
 
-      let data: { error?: string; success?: boolean } = {};
-      try {
-        data = await res.json();
-      } catch {
-        // Response wasn't JSON (e.g. Vercel error page)
-      }
-
       if (!res.ok) {
-        throw new Error(data.error || "Something went wrong. Please try again.");
+        throw new Error("Something went wrong. Please try again.");
       }
 
       setSubmitted(true);
