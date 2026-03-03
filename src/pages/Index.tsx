@@ -13,12 +13,12 @@ const Index = () => {
     <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Sticky Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between bg-background/80 backdrop-blur-md border-b border-border/50">
-        <img
-          src="/images/mutant-logo.png"
-          alt="MUTANT"
-          className="h-12 sm:h-16 w-auto object-contain"
-          style={{ filter: "invert(1) brightness(0.5) sepia(1) saturate(12) hue-rotate(50deg) brightness(1.3) drop-shadow(0 0 14px hsl(82,85%,50%/0.85))" }}
-        />
+        <span
+          className="font-ghastly text-3xl sm:text-4xl text-primary"
+          style={{ textShadow: "0 0 20px hsl(82,85%,50%/0.6)" }}
+        >
+          MUTANT
+        </span>
         {/* nav button now launches pre-order dialog */}
         <PreOrderDialog>
           <button className="px-4 sm:px-6 py-2 bg-primary text-primary-foreground font-display text-xs sm:text-sm tracking-widest hover:box-glow transition-shadow duration-300">

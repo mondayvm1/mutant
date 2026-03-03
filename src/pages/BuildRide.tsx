@@ -83,12 +83,12 @@ export default function BuildRide() {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-40 border-b border-border bg-background/90 backdrop-blur-sm px-6 py-4 flex items-center justify-between">
         <Link to="/">
-          <img
-            src="/images/mutant-logo.png"
-            alt="MUTANT"
-            className="h-14 w-auto object-contain transition-all"
-            style={{ filter: "invert(1) brightness(0.5) sepia(1) saturate(12) hue-rotate(50deg) brightness(1.3) drop-shadow(0 0 12px hsl(82,85%,50%/0.85))" }}
-          />
+          <span
+            className="font-ghastly text-3xl text-primary"
+            style={{ textShadow: "0 0 20px hsl(82,85%,50%/0.6)" }}
+          >
+            MUTANT
+          </span>
         </Link>
         <Link
           to="/"
