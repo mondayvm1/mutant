@@ -2,9 +2,12 @@ export function Footer() {
   return (
     <footer className="border-t border-border py-12">
       <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="font-display text-2xl tracking-widest text-foreground">
-          MUTANT<span className="text-primary">.</span>
-        </div>
+        <img
+          src="/images/mutant-logo.png"
+          alt="MUTANT"
+          className="h-10 w-auto object-contain"
+          style={{ filter: "invert(1) drop-shadow(0 0 6px hsl(82,85%,50%/0.45))" }}
+        />
         <p className="text-muted-foreground text-xs font-body">
           © {new Date().getFullYear()} Mutant Vehicles. A new species of machine.
         </p>
