@@ -20,9 +20,9 @@ const features = [
     desc: "Thousands of hours. Zero rollovers. The geometry simply doesn't allow it.",
   },
   {
-    stat: "45+",
-    label: "MPH TOP SPEED",
-    desc: "When the platform is stable, you can unlock real performance.",
+    stat: "35+",
+    label: "MPH BASE SPEED",
+    desc: "When the platform is stable, you can unlock real performance. Top speed scales with your build.",
   },
 ];
 

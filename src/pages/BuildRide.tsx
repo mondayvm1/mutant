@@ -5,7 +5,7 @@ const POWERTRAIN = [
   {
     id: "sport",
     label: "ELECTRIC SPORT",
-    speed: "45 MPH",
+    speed: "35+ MPH",
     range: "60 mi",
     time: "—",
     price: 0,
@@ -15,22 +15,22 @@ const POWERTRAIN = [
   {
     id: "performance",
     label: "ELECTRIC PERFORMANCE",
-    speed: "65 MPH",
+    speed: "TBD",
     range: "80 mi",
-    time: "3.8s",
+    time: "TBD",
     price: 2000,
     tag: "POPULAR",
-    desc: "Zero to savage. Full send daily.",
+    desc: "Zero to savage. Performance tuned to your spec.",
   },
   {
     id: "beast",
     label: "HYBRID BEAST",
-    speed: "100 MPH",
+    speed: "YOUR CALL",
     range: "150 mi",
-    time: "3.2s",
+    time: "TBD",
     price: 5000,
     tag: "TOP SPEC",
-    desc: "The full mutation. Unrestricted.",
+    desc: "The full mutation. Top end is yours to define.",
   },
 ];
 

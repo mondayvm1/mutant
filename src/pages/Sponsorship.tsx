@@ -57,7 +57,7 @@ const TIERS = [
 
 const STATS = [
   { value: "100", label: "UNITS — YEAR 1" },
-  { value: "45+", label: "MPH TOP SPEED" },
+  { value: "35+", label: "MPH BASE SPEED" },
   { value: "0", label: "ROLLOVER INCIDENTS" },
   { value: "2026", label: "LAUNCH YEAR" },
 ];
