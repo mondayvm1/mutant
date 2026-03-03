@@ -16,8 +16,8 @@ const Index = () => {
         <img
           src="/images/mutant-logo.png"
           alt="MUTANT"
-          className="h-8 sm:h-10 w-auto object-contain"
-          style={{ filter: "invert(1) drop-shadow(0 0 6px hsl(82,85%,50%/0.5))" }}
+          className="h-12 sm:h-16 w-auto object-contain"
+          style={{ filter: "invert(1) brightness(0.5) sepia(1) saturate(12) hue-rotate(50deg) brightness(1.3) drop-shadow(0 0 14px hsl(82,85%,50%/0.85))" }}
         />
         {/* nav button now launches pre-order dialog */}
         <PreOrderDialog>

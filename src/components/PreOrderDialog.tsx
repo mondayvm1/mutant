@@ -32,18 +32,15 @@ export function PreOrderDialog({ children }: PreOrderDialogProps) {
             <X size={16} />
           </DialogClose>
 
-          {/* Logo row */}
-          <div className="flex items-center gap-3 mb-6">
+          {/* Logo */}
+          <div className="mb-6">
             <img
               src="/images/mutant-logo.png"
               alt="MUTANT"
-              className="h-10 w-auto object-contain"
-              style={{ filter: "invert(1) drop-shadow(0 0 8px hsl(82,85%,50%/0.55))" }}
+              className="h-16 w-auto object-contain"
+              style={{ filter: "invert(1) brightness(0.5) sepia(1) saturate(12) hue-rotate(50deg) brightness(1.3) drop-shadow(0 0 18px hsl(82,85%,50%/0.9))" }}
               onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
             />
-            <span className="font-display text-2xl tracking-[0.2em] text-foreground">
-              MUTANT<span className="text-primary">.</span>
-            </span>
           </div>
 
           <h2 className="font-display text-5xl leading-[0.95] text-foreground">

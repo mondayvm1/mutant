@@ -73,8 +73,8 @@ export default function Sponsorship() {
           <img
             src="/images/mutant-logo.png"
             alt="MUTANT"
-            className="h-9 w-auto object-contain transition-all hover:drop-shadow-[0_0_8px_hsl(82,85%,50%/0.7)]"
-            style={{ filter: "invert(1) drop-shadow(0 0 5px hsl(82,85%,50%/0.4))" }}
+            className="h-14 w-auto object-contain transition-all"
+            style={{ filter: "invert(1) brightness(0.5) sepia(1) saturate(12) hue-rotate(50deg) brightness(1.3) drop-shadow(0 0 12px hsl(82,85%,50%/0.85))" }}
           />
         </Link>
         <Link to="/" className="font-display text-xs tracking-widest text-muted-foreground hover:text-foreground transition-colors">

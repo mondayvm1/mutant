@@ -5,8 +5,8 @@ export function Footer() {
         <img
           src="/images/mutant-logo.png"
           alt="MUTANT"
-          className="h-10 w-auto object-contain"
-          style={{ filter: "invert(1) drop-shadow(0 0 6px hsl(82,85%,50%/0.45))" }}
+          className="h-14 w-auto object-contain"
+          style={{ filter: "invert(1) brightness(0.5) sepia(1) saturate(12) hue-rotate(50deg) brightness(1.3) drop-shadow(0 0 14px hsl(82,85%,50%/0.8))" }}
         />
         <p className="text-muted-foreground text-xs font-body">
           © {new Date().getFullYear()} Mutant Vehicles. A new species of machine.
