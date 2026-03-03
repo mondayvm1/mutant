@@ -47,11 +47,12 @@ export function HeroSection() {
           Introducing a New Species
         </motion.p>
 
-        {/* THE — Ghastly Panic, drives in from left */}
-        <div className="overflow-hidden mb-1">
+        {/* THE — same size as MUTANT, drives in from left */}
+        <div className="overflow-hidden mb-0">
           <motion.div
-            className="font-ghastly text-[clamp(2.8rem,9vw,10rem)] leading-none text-foreground"
-            initial={{ x: -500, opacity: 0 }}
+            className="font-ghastly text-[clamp(3.8rem,12.5vw,13.5rem)] leading-none text-foreground"
+            style={{ WebkitTextStroke: "2px currentColor" }}
+            initial={{ x: -600, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.25, duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
           >
@@ -70,6 +71,7 @@ export function HeroSection() {
               className="font-ghastly text-primary inline-block text-[clamp(3.8rem,12.5vw,13.5rem)] leading-none"
               style={{
                 textShadow: "0 0 50px hsl(82,85%,50%/0.55), 0 0 100px hsl(82,85%,50%/0.2)",
+                WebkitTextStroke: "2px hsl(82,85%,50%)",
               }}
               initial={{ x: -400 - i * 40, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
