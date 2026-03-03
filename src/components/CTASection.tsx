@@ -69,7 +69,7 @@ export function CTASection() {
   };
 
   return (
-    <section id="reserve" className="relative py-32 gradient-section overflow-hidden">
+    <section id="preorder" className="relative py-32 gradient-section overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -90,7 +90,7 @@ export function CTASection() {
 
         <ScrollReveal delay={200}>
           <p className="text-muted-foreground font-body text-lg mb-10 max-w-lg mx-auto">
-            Only 100 units in the first production run. Reserve your spot with $0 down.
+            Only 100 units in the first production run. Pre‑order your spot with $0 down.
             Just your info — and your commitment to riding different.
           </p>
         </ScrollReveal>
@@ -136,7 +136,7 @@ export function CTASection() {
                 disabled={loading}
                 className="px-8 py-4 bg-primary text-primary-foreground font-display text-xl tracking-widest hover:box-glow-strong transition-shadow duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? "RESERVING..." : "RESERVE"}
+                {loading ? "PRE-ORDERING..." : "PRE-ORDER"}
               </button>
             </form>
           ) : (
@@ -145,7 +145,7 @@ export function CTASection() {
               animate={{ opacity: 1, scale: 1 }}
               className="p-8 border border-primary/30 rounded-sm"
             >
-              <p className="font-display text-3xl text-primary mb-2">YOU'RE IN</p>
+              <p className="font-display text-3xl text-primary mb-2">YOU'RE PRE-ORDERED</p>
               <p className="text-muted-foreground font-body">
                 Check your inbox — confirmation is on the way. Welcome to the mutation.
               </p>

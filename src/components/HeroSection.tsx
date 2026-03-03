@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import heroImg from "@/assets/hero-mutant.jpg";
+import { PreOrderDialog } from "./PreOrderDialog";
 
 export function HeroSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -63,12 +64,12 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.8 }}
         >
-          <a
-            href="#reserve"
-            className="inline-block px-8 sm:px-10 py-4 bg-primary text-primary-foreground font-display text-xl sm:text-2xl tracking-widest hover:box-glow-strong transition-shadow duration-300 text-center"
-          >
-            RESERVE YOURS
-          </a>
+          {/* trigger pre‑order modal rather than anchor */}
+          <PreOrderDialog>
+            <button className="inline-block px-8 sm:px-10 py-4 bg-primary text-primary-foreground font-display text-xl sm:text-2xl tracking-widest hover:box-glow-strong transition-shadow duration-300 text-center">
+              PRE ORDER NOW
+            </button>
+          </PreOrderDialog>
           <a
             href="#discover"
             className="inline-block px-8 sm:px-10 py-4 border border-foreground/20 text-foreground font-display text-xl sm:text-2xl tracking-widest hover:border-primary/50 transition-colors duration-300 text-center"

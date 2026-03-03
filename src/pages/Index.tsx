@@ -5,6 +5,8 @@ import { FeaturesSection } from "@/components/FeaturesSection";
 import { ActionSection } from "@/components/ActionSection";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
+import { PreOrderDialog } from "@/components/PreOrderDialog";
+import { FloatingCTA } from "@/components/FloatingCTA";
 
 const Index = () => {
   return (
@@ -14,12 +16,12 @@ const Index = () => {
         <span className="font-display text-xl sm:text-2xl tracking-widest text-foreground">
           MUTANT<span className="text-primary">.</span>
         </span>
-        <a
-          href="#reserve"
-          className="px-4 sm:px-6 py-2 bg-primary text-primary-foreground font-display text-xs sm:text-sm tracking-widest hover:box-glow transition-shadow duration-300"
-        >
-          RESERVE
-        </a>
+        {/* nav button now launches pre-order dialog */}
+        <PreOrderDialog>
+          <button className="px-4 sm:px-6 py-2 bg-primary text-primary-foreground font-display text-xs sm:text-sm tracking-widest hover:box-glow transition-shadow duration-300">
+            PRE ORDER
+          </button>
+        </PreOrderDialog>
       </nav>
 
       <HeroSection />
@@ -29,6 +31,8 @@ const Index = () => {
       <ActionSection />
       <CTASection />
       <Footer />
+      {/* fixed right-side pre-order button */}
+      <FloatingCTA />
     </div>
   );
 };
