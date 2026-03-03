@@ -43,7 +43,7 @@ export function PreOrderDialog({ children }: PreOrderDialogProps) {
             />
           </div>
 
-          <h2 className="font-display text-5xl leading-[0.95] text-foreground">
+          <h2 className="font-ghastly text-6xl leading-[0.9] text-foreground">
             A NEW SPECIES.
             <br />
             <span

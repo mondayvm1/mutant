@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         display: ['Bebas Neue', 'sans-serif'],
         body: ['Space Grotesk', 'sans-serif'],
+        ghastly: ['Ghastly Panic', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

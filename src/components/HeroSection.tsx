@@ -46,7 +46,7 @@ export function HeroSection() {
         >
           THE
           <br />
-          <span className="gradient-text">MUTANT</span>
+          <span className="font-ghastly gradient-text text-[clamp(4rem,13vw,14rem)]" style={{ textShadow: "0 0 60px hsl(82,85%,50%/0.35)" }}>MUTANT</span>
         </motion.h1>
 
         <motion.p

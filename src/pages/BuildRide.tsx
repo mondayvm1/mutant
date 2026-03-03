@@ -102,7 +102,7 @@ export default function BuildRide() {
         {/* Header */}
         <div className="mb-12">
           <p className="font-display text-xs tracking-[0.4em] text-primary mb-3">CONFIGURATOR</p>
-          <h1 className="font-display text-7xl leading-none text-foreground mb-4">
+          <h1 className="font-ghastly text-8xl leading-none text-foreground mb-4">
             CREATE YOUR
             <br />
             <span

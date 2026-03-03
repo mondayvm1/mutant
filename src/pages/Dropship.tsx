@@ -77,7 +77,7 @@ export default function Dropship() {
       <div className="pt-32 pb-20 px-6 max-w-6xl mx-auto">
         {/* Header */}
         <p className="font-display text-xs tracking-[0.4em] text-primary mb-4">DROPSHIP GEAR</p>
-        <h1 className="font-display text-7xl leading-none mb-6">
+        <h1 className="font-ghastly text-8xl leading-none mb-6">
           SOURCE IT.
           <br />
           <span

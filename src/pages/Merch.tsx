@@ -131,7 +131,7 @@ export default function Merch() {
       <div className="pt-32 pb-20 px-6 max-w-5xl mx-auto">
         {/* Header */}
         <p className="font-display text-xs tracking-[0.4em] text-primary mb-4">MERCH & GIVEAWAYS</p>
-        <h1 className="font-display text-7xl leading-none mb-6">
+        <h1 className="font-ghastly text-8xl leading-none mb-6">
           REPRESENT
           <br />
           <span
