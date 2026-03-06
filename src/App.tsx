@@ -9,6 +9,7 @@ import BuildRide from "./pages/BuildRide";
 import Sponsorship from "./pages/Sponsorship";
 import Merch from "./pages/Merch";
 import Dropship from "./pages/Dropship";
+import Community from "./pages/Community";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/sponsorship" element={<Sponsorship />} />
           <Route path="/merch" element={<Merch />} />
           <Route path="/dropship" element={<Dropship />} />
+          <Route path="/community" element={<Community />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

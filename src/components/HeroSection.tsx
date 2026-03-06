@@ -109,7 +109,7 @@ export function HeroSection() {
             </button>
           </PreOrderDialog>
           <a
-            href="#community"
+            href="/community"
             className="inline-block px-8 sm:px-10 py-4 border border-foreground/20 text-foreground font-display text-xl sm:text-2xl tracking-widest hover:border-primary/50 transition-colors duration-300 text-center"
           >
             JOIN THE COMMUNITY
