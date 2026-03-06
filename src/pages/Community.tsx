@@ -1,17 +1,26 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import heroImg from "@/assets/hero-mutant.jpg";
-import actionImg from "@/assets/mutant-action.jpg";
-import detailImg from "@/assets/mutant-detail.jpg";
-import sideImg from "@/assets/mutant-side.jpg";
-import communityImg from "@/assets/join-community.jpg";
+import { useState, useRef } from "react";
 import { PreOrderDialog } from "@/components/PreOrderDialog";
 
-const GALLERY = [
-  { src: heroImg, label: "BUILT FOR THE TERRAIN", span: "col-span-2 row-span-2" },
-  { src: actionImg, label: "FULL SEND", span: "col-span-1 row-span-1" },
-  { src: sideImg, label: "EVERY ANGLE", span: "col-span-1 row-span-1" },
-  { src: detailImg, label: "THE DETAILS", span: "col-span-2 row-span-1" },
+import heroImg from "@/assets/gallery/hero-mutant.jpg";
+import actionImg from "@/assets/gallery/mutant-action.jpg";
+import detailImg from "@/assets/gallery/mutant-detail.jpg";
+import sideImg from "@/assets/gallery/mutant-side.jpg";
+import communityImg from "@/assets/gallery/join-community.jpg";
+
+interface GalleryItem {
+  src: string;
+  label: string;
+  isUpload?: boolean;
+}
+
+const BASE_GALLERY: GalleryItem[] = [
+  { src: heroImg, label: "BUILT FOR THE TERRAIN" },
+  { src: communityImg, label: "THE CREW" },
+  { src: actionImg, label: "FULL SEND" },
+  { src: sideImg, label: "EVERY ANGLE" },
+  { src: detailImg, label: "THE DETAILS" },
 ];
 
 const RATINGS = [
@@ -29,6 +38,23 @@ const STATS = [
 ];
 
 export default function Community() {
+  const [uploads, setUploads] = useState<GalleryItem[]>([]);
+  const [dragging, setDragging] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleFiles = (files: FileList | null) => {
+    if (!files) return;
+    const newItems: GalleryItem[] = [];
+    Array.from(files).forEach((file) => {
+      if (!file.type.startsWith("image/")) return;
+      const url = URL.createObjectURL(file);
+      newItems.push({ src: url, label: "COMMUNITY UPLOAD", isUpload: true });
+    });
+    setUploads((prev) => [...prev, ...newItems]);
+  };
+
+  const allGallery = [...BASE_GALLERY, ...uploads];
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Nav */}
@@ -64,7 +90,7 @@ export default function Community() {
               A VEHICLE.
             </span>
           </h1>
-          <p className="font-body text-muted-foreground max-w-2xl leading-relaxed mb-2">
+          <p className="font-body text-muted-foreground max-w-2xl leading-relaxed">
             The Mutant is built for everyone who rides different. Young guns, seasoned shredders,
             weekend warriors, and full-time adventurers — if you feel the pull of the dirt, you belong here.
           </p>
@@ -103,57 +129,108 @@ export default function Community() {
 
         <div className="h-px mb-12 bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
-        {/* Gallery */}
-        <div className="mb-16">
-          <p className="font-display text-xs tracking-[0.35em] text-muted-foreground mb-6">THE MUTANT IN THE WILD</p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 auto-rows-[220px] sm:auto-rows-[260px] gap-3">
-            {GALLERY.map((item, i) => (
-              <motion.div
-                key={i}
-                className={`relative overflow-hidden rounded-sm group cursor-pointer ${item.span}`}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.1 + i * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <img
-                  src={item.src}
-                  alt={item.label}
-                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                  <p className="font-display text-xs tracking-[0.3em] text-primary">{item.label}</p>
-                </div>
-                <div className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </motion.div>
-            ))}
-          </div>
+        {/* ── GALLERY ── */}
+        <div className="mb-6">
+          <p className="font-display text-xs tracking-[0.35em] text-muted-foreground mb-2">THE MUTANT IN THE WILD</p>
+          <p className="font-body text-xs text-muted-foreground">
+            {allGallery.length} photos · <span className="text-primary">{uploads.length} community uploads</span>
+          </p>
         </div>
 
-        {/* Community split section */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
-          {/* Image */}
-          <motion.div
-            className="relative overflow-hidden rounded-sm"
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <img
-              src={communityImg}
-              alt="Join the Mutant community"
-              className="w-full h-[420px] sm:h-[520px] object-cover object-center"
-            />
-            <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-primary/60" />
-            <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-primary/60" />
-          </motion.div>
+        <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 space-y-3 mb-10">
+          {allGallery.map((item, i) => (
+            <motion.div
+              key={item.src}
+              className="relative overflow-hidden rounded-sm group cursor-pointer break-inside-avoid"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.05 + i * 0.06, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <img
+                src={item.src}
+                alt={item.label}
+                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-1 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                <p className={`font-display text-[9px] tracking-[0.3em] ${item.isUpload ? "text-yellow-400" : "text-primary"}`}>
+                  {item.label}
+                </p>
+              </div>
+              {item.isUpload && (
+                <div className="absolute top-2 right-2 px-1.5 py-0.5 bg-yellow-400/20 border border-yellow-400/40 rounded-sm">
+                  <span className="font-display text-[8px] tracking-widest text-yellow-400">YOUR SHOT</span>
+                </div>
+              )}
+            </motion.div>
+          ))}
+        </div>
 
-          {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        {/* ── UPLOAD SECTION ── */}
+        <div className="mb-16">
+          <div className="mb-4">
+            <p className="font-display text-xs tracking-[0.35em] text-muted-foreground mb-1">HAVE YOUR OWN PICS?</p>
+            <p className="font-body text-xs text-muted-foreground">Upload your ride shots and they'll appear in the gallery above.</p>
+          </div>
+
+          <div
+            className={`relative border-2 border-dashed rounded-sm p-10 text-center transition-all cursor-pointer ${
+              dragging
+                ? "border-primary bg-primary/10"
+                : "border-border hover:border-primary/40 hover:bg-primary/5"
+            }`}
+            onClick={() => inputRef.current?.click()}
+            onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
+            onDragLeave={() => setDragging(false)}
+            onDrop={(e) => {
+              e.preventDefault();
+              setDragging(false);
+              handleFiles(e.dataTransfer.files);
+            }}
           >
+            <input
+              ref={inputRef}
+              type="file"
+              accept="image/*"
+              multiple
+              className="hidden"
+              onChange={(e) => handleFiles(e.target.files)}
+            />
+            <div className="pointer-events-none">
+              <p className="text-4xl mb-4">📸</p>
+              <p className="font-display text-sm tracking-widest text-foreground mb-2">UPLOAD HERE</p>
+              <p className="font-body text-xs text-muted-foreground mb-4">
+                Drag & drop or click to browse · JPG, PNG, WEBP · Multiple files OK
+              </p>
+              <span className="inline-block px-6 py-2.5 bg-primary/10 border border-primary/30 text-primary font-display text-xs tracking-widest rounded-sm">
+                CHOOSE FILES
+              </span>
+            </div>
+            {dragging && (
+              <div className="absolute inset-0 flex items-center justify-center bg-primary/10 rounded-sm">
+                <p className="font-display text-sm tracking-widest text-primary">DROP IT.</p>
+              </div>
+            )}
+          </div>
+
+          {uploads.length > 0 && (
+            <div className="flex items-center justify-between mt-4">
+              <p className="font-body text-xs text-muted-foreground">
+                {uploads.length} photo{uploads.length > 1 ? "s" : ""} added to gallery
+              </p>
+              <button
+                onClick={() => setUploads([])}
+                className="font-display text-[10px] tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+              >
+                CLEAR UPLOADS
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* Community split */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
+          <div>
             <p className="font-display text-xs tracking-[0.4em] text-primary mb-4">THE WHOLE CREW</p>
             <h2 className="font-ghastly text-6xl sm:text-7xl leading-none mb-6">
               RIDE
@@ -174,7 +251,6 @@ export default function Community() {
               with you. Every age, every skill level, every terrain.
             </p>
 
-            {/* Stats */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8 py-6 border-y border-border">
               {STATS.map((s) => (
                 <div key={s.label} className="text-center">
@@ -189,10 +265,20 @@ export default function Community() {
                 PRE-ORDER + JOIN THE MOVEMENT →
               </button>
             </PreOrderDialog>
-          </motion.div>
+          </div>
+
+          <div className="relative overflow-hidden rounded-sm">
+            <img
+              src={communityImg}
+              alt="Join the Mutant community"
+              className="w-full h-[420px] sm:h-[520px] object-cover object-center"
+            />
+            <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-primary/60" />
+            <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-primary/60" />
+          </div>
         </div>
 
-        {/* Social / tag us */}
+        {/* Tag us */}
         <div className="bg-[hsl(82,85%,50%,0.06)] border border-[hsl(82,85%,50%,0.2)] rounded-sm p-8 text-center">
           <p className="font-display text-xs tracking-[0.4em] text-primary mb-3">TAG US</p>
           <p className="font-ghastly text-5xl text-foreground mb-3">#RIDEDIFFERENT</p>
