@@ -194,6 +194,7 @@ export default function Community() {
               accept="image/*"
               multiple
               className="hidden"
+              onClick={(e) => e.stopPropagation()}
               onChange={(e) => handleFiles(e.target.files)}
             />
             <div className="pointer-events-none">
