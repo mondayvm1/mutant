@@ -26,8 +26,7 @@ export function HeroSection() {
           alt="The Mutant 4-Wheeler"
           className="w-full h-full object-cover object-center"
         />
-        {/* Light gradient only at top + bottom so the vehicle is fully visible */}
-        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background/70 to-transparent" />
+        {/* Bottom gradient for CTA legibility */}
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background to-transparent" />
       </motion.div>
 
