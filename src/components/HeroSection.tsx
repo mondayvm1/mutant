@@ -32,14 +32,85 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/30" />
       </motion.div>
 
-      {/* Content */}
+      {/* ── MOBILE LAYOUT: title at top, CTAs below ── */}
       <motion.div
-        className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center pt-16 md:pt-0"
+        className="md:hidden absolute inset-0 z-10 flex flex-col pt-20 px-5"
         style={{ opacity }}
       >
         {/* Eyebrow */}
         <motion.p
-          className="text-primary font-body text-xs sm:text-sm tracking-[0.3em] uppercase mb-3 sm:mb-4"
+          className="text-primary font-body text-[10px] tracking-[0.3em] uppercase mb-3"
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.1, duration: 0.8 }}
+        >
+          Introducing a New Species
+        </motion.p>
+
+        {/* THE MUTANT — single horizontal line */}
+        <motion.div
+          className="leading-none mb-4 whitespace-nowrap"
+          initial={{ x: -80, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.25, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span
+            className="font-ghastly text-foreground"
+            style={{ fontSize: "clamp(2.6rem,13vw,3.5rem)", WebkitTextStroke: "1.5px currentColor" }}
+          >
+            THE{" "}
+          </span>
+          <span
+            className="font-ghastly text-primary"
+            style={{
+              fontSize: "clamp(2.6rem,13vw,3.5rem)",
+              textShadow: "0 0 30px hsl(82,85%,50%/0.6)",
+              WebkitTextStroke: "1.5px hsl(82,85%,50%)",
+            }}
+          >
+            MUTANT
+          </span>
+        </motion.div>
+
+        {/* Tagline */}
+        <motion.p
+          className="font-body text-sm text-muted-foreground max-w-xs mb-6 leading-relaxed"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7, duration: 0.7 }}
+        >
+          35 MPH and beyond — customized to your build.
+        </motion.p>
+
+        {/* CTAs */}
+        <motion.div
+          className="flex flex-col gap-3 w-full max-w-xs"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.7 }}
+        >
+          <PreOrderDialog>
+            <button className="w-full py-4 bg-primary text-primary-foreground font-display text-base tracking-widest text-center">
+              PRE ORDER NOW
+            </button>
+          </PreOrderDialog>
+          <a
+            href="/community"
+            className="w-full py-4 border border-foreground/20 text-foreground font-display text-base tracking-widest hover:border-primary/50 transition-colors text-center"
+          >
+            JOIN THE COMMUNITY
+          </a>
+        </motion.div>
+      </motion.div>
+
+      {/* ── DESKTOP LAYOUT: centered, per-letter animation ── */}
+      <motion.div
+        className="hidden md:block relative z-10 max-w-6xl mx-auto px-6 text-center"
+        style={{ opacity }}
+      >
+        {/* Eyebrow */}
+        <motion.p
+          className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-4"
           initial={{ opacity: 0, x: -60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.1, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
@@ -47,7 +118,7 @@ export function HeroSection() {
           Introducing a New Species
         </motion.p>
 
-        {/* THE — same size as MUTANT, drives in from left */}
+        {/* THE */}
         <div className="overflow-hidden mb-0">
           <motion.div
             className="font-ghastly text-[clamp(3.8rem,12.5vw,13.5rem)] leading-none text-foreground"
@@ -60,7 +131,7 @@ export function HeroSection() {
           </motion.div>
         </div>
 
-        {/* MUTANT — each letter drives in left→right with stagger, then drifts right on scroll */}
+        {/* MUTANT — per-letter stagger + scroll drift */}
         <motion.div
           className="flex justify-center items-end leading-none overflow-visible"
           style={{ x: lettersX }}
@@ -75,11 +146,7 @@ export function HeroSection() {
               }}
               initial={{ x: -400 - i * 40, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{
-                delay: 0.45 + i * 0.07,
-                duration: 0.95,
-                ease: [0.16, 1, 0.3, 1],
-              }}
+              transition={{ delay: 0.45 + i * 0.07, duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
             >
               {letter}
             </motion.span>
@@ -88,7 +155,7 @@ export function HeroSection() {
 
         {/* Tagline */}
         <motion.p
-          className="font-body text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl mx-auto mt-6 mb-8 sm:mb-10 px-2"
+          className="font-body text-lg md:text-xl text-muted-foreground max-w-xl mx-auto mt-6 mb-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.8 }}
@@ -98,19 +165,19 @@ export function HeroSection() {
 
         {/* CTAs */}
         <motion.div
-          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0"
+          className="flex flex-row gap-4 justify-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.3, duration: 0.8 }}
         >
           <PreOrderDialog>
-            <button className="inline-block px-8 sm:px-10 py-4 bg-primary text-primary-foreground font-display text-xl sm:text-2xl tracking-widest hover:box-glow-strong transition-shadow duration-300 text-center">
+            <button className="inline-block px-10 py-4 bg-primary text-primary-foreground font-display text-2xl tracking-widest hover:box-glow-strong transition-shadow duration-300 text-center">
               PRE ORDER NOW
             </button>
           </PreOrderDialog>
           <a
             href="/community"
-            className="inline-block px-8 sm:px-10 py-4 border border-foreground/20 text-foreground font-display text-xl sm:text-2xl tracking-widest hover:border-primary/50 transition-colors duration-300 text-center"
+            className="inline-block px-10 py-4 border border-foreground/20 text-foreground font-display text-2xl tracking-widest hover:border-primary/50 transition-colors duration-300 text-center"
           >
             JOIN THE COMMUNITY
           </a>
