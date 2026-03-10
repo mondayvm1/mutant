@@ -290,8 +290,8 @@ export default function MutantPDP() {
             transition={{ duration: 0.6 }}
           >
             <p className="font-display text-xs tracking-[0.4em] text-primary mb-3">COMPARE</p>
-            <h2 className="font-ghastly text-5xl sm:text-6xl leading-none mb-10">
-              BASE · META · PRO
+            <h2 className="font-ghastly text-5xl sm:text-6xl leading-none mb-10 flex gap-6 sm:gap-12">
+              <span>BASE</span><span>META</span><span>PRO</span>
             </h2>
           </motion.div>
 
