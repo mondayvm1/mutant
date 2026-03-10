@@ -35,17 +35,8 @@ export function HeroSection() {
         className="absolute inset-0 z-10 flex flex-col justify-between px-5 sm:px-8 pt-[72px] pb-10 sm:pb-14"
         style={{ opacity }}
       >
-        {/* ── TOP: eyebrow + THE MUTANT ── */}
+        {/* ── TOP: THE MUTANT ── */}
         <div className="text-center">
-          <motion.p
-            className="font-body text-[10px] sm:text-xs tracking-[0.35em] text-primary uppercase mb-2 sm:mb-3"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.7 }}
-          >
-            Introducing a New Species
-          </motion.p>
-
           {/* THE MUTANT — single line, centered, per-letter on MUTANT */}
           <motion.div
             className="flex items-end justify-center leading-none"
