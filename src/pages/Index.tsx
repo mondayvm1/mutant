@@ -5,8 +5,8 @@ import { FeaturesSection } from "@/components/FeaturesSection";
 import { ActionSection } from "@/components/ActionSection";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
-import { PreOrderDialog } from "@/components/PreOrderDialog";
 import { FloatingCTA } from "@/components/FloatingCTA";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
@@ -19,12 +19,12 @@ const Index = () => {
         >
           MUTANT
         </span>
-        {/* nav button now launches pre-order dialog */}
-        <PreOrderDialog>
-          <button className="px-4 sm:px-6 py-2 bg-primary text-primary-foreground font-display text-xs sm:text-sm tracking-widest hover:box-glow transition-shadow duration-300">
-            PRE ORDER
-          </button>
-        </PreOrderDialog>
+        <Link
+          to="/mutant"
+          className="px-4 sm:px-6 py-2 bg-primary text-primary-foreground font-display text-xs sm:text-sm tracking-widest hover:bg-primary/90 transition-colors"
+        >
+          BUILD YOUR MUTANT
+        </Link>
       </nav>
 
       <HeroSection />

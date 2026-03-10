@@ -10,6 +10,9 @@ import Sponsorship from "./pages/Sponsorship";
 import Merch from "./pages/Merch";
 import Dropship from "./pages/Dropship";
 import Community from "./pages/Community";
+import MutantPDP from "./pages/MutantPDP";
+import Store from "./pages/Store";
+import StoreCategory from "./pages/StoreCategory";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +24,12 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/mutant" element={<MutantPDP />} />
+          <Route path="/store" element={<Store />} />
+          <Route path="/store/mutant" element={<StoreCategory category="mutant" />} />
+          <Route path="/store/accessories" element={<StoreCategory category="accessories" />} />
+          <Route path="/store/parts" element={<StoreCategory category="parts" />} />
+          <Route path="/store/merch" element={<StoreCategory category="merch" />} />
           <Route path="/build" element={<BuildRide />} />
           <Route path="/sponsorship" element={<Sponsorship />} />
           <Route path="/merch" element={<Merch />} />

@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import heroImg from "@/assets/hero-mutant.jpg";
-import { PreOrderDialog } from "./PreOrderDialog";
+import { Link } from "react-router-dom";
 
 const MUTANT_LETTERS = "MUTANT".split("");
 
@@ -106,11 +106,12 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.7 }}
           >
-            <PreOrderDialog>
-              <button className="px-8 sm:px-10 py-4 bg-primary text-primary-foreground font-display text-base sm:text-xl tracking-widest hover:bg-primary/90 hover:shadow-[0_0_40px_hsl(82,85%,50%/0.5)] transition-all text-center">
-                PRE ORDER NOW
-              </button>
-            </PreOrderDialog>
+            <Link
+              to="/mutant"
+              className="inline-block px-8 sm:px-10 py-4 bg-primary text-primary-foreground font-display text-base sm:text-xl tracking-widest hover:bg-primary/90 hover:shadow-[0_0_40px_hsl(82,85%,50%/0.5)] transition-all text-center"
+            >
+              BUILD YOUR MUTANT
+            </Link>
             <a
               href="/community"
               className="px-8 sm:px-10 py-4 border border-foreground/30 text-foreground font-display text-base sm:text-xl tracking-widest hover:border-primary/50 transition-colors text-center"
