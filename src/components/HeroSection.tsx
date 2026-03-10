@@ -39,21 +39,22 @@ export function HeroSection() {
         <div className="text-center">
           {/* THE MUTANT — single line, centered, per-letter on MUTANT */}
           <motion.div
-            className="flex items-end justify-center leading-none"
+            className="flex items-end justify-center leading-none flex-nowrap"
             style={{ x: lettersX }}
           >
             {/* THE */}
             <motion.span
               className="font-ghastly text-foreground leading-none"
               style={{
-                fontSize: "clamp(2.4rem,9.5vw,11rem)",
+                fontSize: "clamp(2rem,8.5vw,11rem)",
                 WebkitTextStroke: "clamp(1px,0.15vw,2px) currentColor",
+                marginRight: "0.22em",
               }}
               initial={{ x: -300, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
             >
-              THE&nbsp;
+              THE
             </motion.span>
 
             {/* MUTANT — each letter staggers in */}
@@ -62,7 +63,7 @@ export function HeroSection() {
                 key={i}
                 className="font-ghastly text-primary inline-block leading-none"
                 style={{
-                  fontSize: "clamp(2.4rem,9.5vw,11rem)",
+                  fontSize: "clamp(2rem,8.5vw,11rem)",
                   textShadow: "0 0 40px hsl(82,85%,50%/0.55), 0 0 80px hsl(82,85%,50%/0.2)",
                   WebkitTextStroke: "clamp(1px,0.15vw,2px) hsl(82,85%,50%)",
                 }}
